@@ -1,0 +1,62 @@
+---
+title: "HW3"
+author: "Han SangHyeon"
+date: "2019년 4월 8일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include = TRUE}
+ames = read.csv("C:/users/BasicSTAT00/Desktop/0408 통계학실험 Lab3/ames.csv", header=T)
+```
+
+#예제 1.
+```{r include = TRUE}
+hist(ames$SalePrice)
+fivenum(ames$SalePrice)
+```
+히스토그램을 보면 그 형태가 정규분포의 형태와 유사하다.
+
+#예제 2.
+```{r include = TRUE}
+SPsample = sample(ames$SalePrice,50)
+mean(SPsample) #모평균의 추정
+```
+
+#예제 3.
+```{r include = TRUE}
+sample_mean50<-c()
+for(i in 1:5000){
+  SPsample = sample(ames$SalePrice,50)
+  sample_mean50<-c(sample_mean50,mean(SPsample))
+}
+qqnorm(sample_mean50)
+qqline(sample_mean50,col=2)
+```
+정규분포 분위수 대조도를 통해 확인해보면 정규분포와 유사한 분포임을 알 수 있다.
+
+#예제 4.
+```{r include = TRUE}
+mean(sample_mean50);var(sample_mean50) #mean(SPsample), var(SPsample)/50다
+mean(SPsample);var(SPsample)
+var(SPsample)/50
+```
+표본 평균의 분포에서 평균은 모평균과 유사하고 분산은 모분산을 표본의 크기로 나눈 값과 유사하다.
+
+#예제 5.
+```{r include = TRUE}
+sample_mean150<-c()
+for(i in 1:5000){
+  SPsample = sample(ames$SalePrice,150)
+  sample_mean150<-c(sample_mean150,mean(SPsample))
+}
+qqnorm(sample_mean150)
+qqline(sample_mean150,col=2)
+```
+
+정규분포에 좀 더 가까워졌음을 확인할 수 있다.
+(점들의 집합이 직선에 좀 더 근접해짐)
