@@ -15,6 +15,8 @@ count/1000
 data<-read.csv("C:/Users/BasicSTAT00/Downloads/ames.csv");
 area<-data$Gr.Liv.Area
 mean(area); var(area) #1
+round(mean(area),3)
+round(var(area),10)
 
 sample_60<-sample(area,60,replace = F)
 mean(sample_60) #2
