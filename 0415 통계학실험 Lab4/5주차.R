@@ -60,3 +60,5 @@ plot_ci <- function(lo, hi, m) {
 }
 
 plot_ci(lower, upper, pop.mean) # 그래프 실행 코드
+
+fivenum(area)
