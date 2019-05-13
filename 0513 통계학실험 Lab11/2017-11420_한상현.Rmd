@@ -1,0 +1,40 @@
+---
+title: "HW4"
+author: "Han SangHyeon"
+date: "2019년 5월 13일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<h1>HW4</h1>
+
+예제1
+```{r include=TRUE}
+data1<-read.table("teXtbooks.txt")
+t.test(data1$amazNew, data1$uclaNew, var.equal=T)
+```
+
+H0 : mu1 = mu2 / H1 : m1 : mu1 1= mu2
+p-value = 0.16 : 기각되지 않음.
+
+예제2
+```{r include=TRUE}
+data2<-read.table("run10samp.txt")
+var.test(data2$time ~ data2$gender)
+
+#등분산 검정 : p-value = 0.1833 > 0.05 : 기각되지 않음.
+
+t.test(data2$time ~ data2$gender,var.equal=T)
+
+male<-data2$time[data2$gender == 'M']
+female<-data2$time[data2$gender == 'F']
+t.test(male,female,var.equal=T)
+```
+
+H0 : mu1 = mu2 / H1 : m1 : mu1 1= mu2
+p-value = 1.544e-06 : 0.05보다 작으므로 기각됨.
+
+(t.test()를 이용하는 두 가지 방법으로 코드를 작성함)
