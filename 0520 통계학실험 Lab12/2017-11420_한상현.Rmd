@@ -1,0 +1,34 @@
+---
+title: "HW5"
+author: "Han SangHyeon"
+date: "2019년 5월 20일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<h2>#예제1</h2>
+```{r include = TRUE}
+knowwell<-c(288,378)
+dontknowwell<-c(10,7)
+dontknow<-c(61,62)
+data<-rbind(knowwell,dontknowwell,dontknow)
+
+data
+chisq.test(data)
+```
+p-value = 0.2092이므로 귀무가설이 기각되지 않는다. 따라서 성별과 관계가 없다.
+
+<h2>#예제2</h2>
+```{r include = TRUE}
+#예제2
+notuse<-c(11,39)
+use<-c(14,26)
+data<-rbind(notuse,use)
+
+data
+chisq.test(data)
+```
+ㅔ-value = 0.2579이므로 귀무가설이 기각되지 않는다. 따라서 히석제 사용여부와 생존여부는 서로 독립이다.
